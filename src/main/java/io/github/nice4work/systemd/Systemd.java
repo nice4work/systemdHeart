@@ -1,4 +1,4 @@
-package com.nice4work.systemd;
+package io.github.nice4work.systemd;
 
 import com.sun.jna.Library;
 import com.sun.jna.Native;
