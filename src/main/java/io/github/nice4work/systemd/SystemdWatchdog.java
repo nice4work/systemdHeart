@@ -8,6 +8,8 @@ import java.nio.file.Files;
  */
 public class SystemdWatchdog {
 
+    public static boolean open = true;
+
     /**
      * 是否支持systemd
      *
@@ -43,13 +45,30 @@ public class SystemdWatchdog {
         }
     }
 
+
+    /**
+     * 关闭心跳
+     */
+    public static void closeHeartbeat() {
+        open = false;
+    }
+
+    /**
+     * 开启心跳
+     */
+    public static void openHeartbeat() {
+        open = true;
+    }
+
+
     /**
      * 发送心跳请求
      */
     public static void notifyWatchdog() {
-
-        // 发送 watchdog 信号
-        Systemd.INSTANCE.sd_notify(0, "WATCHDOG=1");
+        if(open){
+            // 发送 watchdog 信号
+            Systemd.INSTANCE.sd_notify(0, "WATCHDOG=1");
+        }
     }
 }
 

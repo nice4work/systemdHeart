@@ -21,5 +21,23 @@ ServiceLoader<Initializer> loader = ServiceLoader.load(Initializer.class);
 ```
 
 
+### 3 service文件添加一下配置
+
+```service
+KillMode=process
+TimeoutStopSec=5
+User=your_user_name
+Group=your_group_name
+WatchdogSec=10s
+Restart=on-failure
+RestartSec=5s
+```
+
+
+
+
+### 4 例子：
+![](./doc/img/img.png)
+
 
 
