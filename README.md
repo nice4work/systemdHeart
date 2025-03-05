@@ -6,7 +6,7 @@
   <dependency>
     <groupId>io.github.nice4work</groupId>
     <artifactId>systemdHeartbeat</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
 </dependency>
 ```
 
