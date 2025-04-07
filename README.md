@@ -32,6 +32,33 @@ WatchdogSec=10s
 Restart=on-failure
 RestartSec=5s
 ```
+完整配置例子
+```service
+[Unit]
+Description=formula engine service
+After=network.target multi-user.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/xxxx
+PIDFile=/opt/xxxx/application.pid
+StandardOutput=null
+StandardError=null
+ExecStart=/usr/local/jdk1.8.0_181/bin/java -jar -Dfile.encoding=utf-8 -Dconfig.rdb.enable=true  -Duser.timezone=Asia/Shanghai xxxx.jar
+ExecStop=/bin/kill --pid ${MAINPID}
+TimeoutStopSec=10s
+KillMode=process
+WatchdogSec=30s
+Restart=on-failure
+RestartSec=10s
+
+[Install]
+WantedBy=multi-user.target
+
+
+
+```
+
 
 
 
